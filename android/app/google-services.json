@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1074127913692",
+    "project_id": "electronics-shop-59ff9",
+    "storage_bucket": "electronics-shop-59ff9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074127913692:android:bfeee2f98647bbe4a8ea19",
+        "android_client_info": {
+          "package_name": "com.example.electronics_shop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWLl6UN-p8GIWpN1nBLKWv8kQ5PKzXVWA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
