@@ -51,6 +51,7 @@ dependencies:
   easy_localization:  ^3.0.5
   google_sign_in: ^6.2.1
   cloud_firestore: ^4.15.9
+  flutter_staggered_animations: ^1.1.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
