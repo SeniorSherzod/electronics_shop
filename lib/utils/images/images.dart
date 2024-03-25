@@ -24,6 +24,7 @@ class AppImages {
   static const String search = "assets/icons/search.svg";
   static const String profile = "assets/icons/profile.svg";
   static const String store = "assets/icons/store.svg";
+  static const String like = "assets/icons/like.svg";
 
 
 
