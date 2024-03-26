@@ -52,6 +52,10 @@ dependencies:
   google_sign_in: ^6.2.1
   cloud_firestore: ^4.15.9
   flutter_staggered_animations: ^1.1.1
+  flutter_local_notifications: ^17.0.0
+  flutter_timezone: ^1.0.4
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

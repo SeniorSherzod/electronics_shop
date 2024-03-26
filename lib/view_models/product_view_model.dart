@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../models/product_model.dart';
+import '../services/local_notification services.dart';
 import '../utils/connstants/app_const.dart';
 import '../utils/utility_functions.dart';
 
@@ -44,6 +45,8 @@ class ProductsViewModel extends ChangeNotifier {
           .collection(AppConstants.products)
           .doc(cf.id)
           .update({"doc_id": cf.id});
+
+      LocalNotificationService().showNotification(title: "${productModel.productName} nomli mahsulot qo'shildi", body: "Bizni mahsulot haqida batafsil malumot olasiz", id: 3);
 
       _notify(false);
     } on FirebaseException catch (error) {

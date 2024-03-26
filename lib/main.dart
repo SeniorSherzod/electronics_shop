@@ -1,4 +1,5 @@
 import 'package:electronics_shop/screens/routes.dart';
+import 'package:electronics_shop/services/local_notification%20services.dart';
 import 'package:electronics_shop/utils/colors/colors.dart';
 import 'package:electronics_shop/view_models/categoriy_view_model.dart';
 import 'package:electronics_shop/view_models/product_view_model.dart';
@@ -12,7 +13,9 @@ import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await configureLocalTimeZone();
+  await Firebase.initializeApp(
+options: DefaultFirebaseOptions.currentPlatform);
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => LoginViewModel()),
@@ -29,6 +32,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+    LocalNotificationService.localNotificationService.init(navigatorKey);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

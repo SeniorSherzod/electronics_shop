@@ -1,3 +1,4 @@
+import 'package:electronics_shop/models/category_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../utils/colors/colors.dart';

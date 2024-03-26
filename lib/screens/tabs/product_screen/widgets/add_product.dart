@@ -1,14 +1,21 @@
+import 'package:electronics_shop/models/product_model.dart';
 import 'package:electronics_shop/screens/tabs/home_screen/widgets/update_button.dart';
 import 'package:electronics_shop/screens/tabs/home_screen/widgets/update_textfield.dart';
+import 'package:electronics_shop/services/local_notification%20services.dart';
+import 'package:electronics_shop/view_models/product_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../models/category_model.dart';
 import '../../../../utils/colors/colors.dart';
 import '../../../../view_models/categoriy_view_model.dart';
 
-void showCustomBottomSheet(BuildContext context) {
+void showAddProductCustomBottomSheet(BuildContext context) {
   final nameController = TextEditingController();
   final imageController = TextEditingController();
+  final priceController = TextEditingController();
+  final descriptionController = TextEditingController();
+  final docController = TextEditingController();
+  final categoryController = TextEditingController();
 
   // Ensure keyboard doesn't obscure text fields
   showModalBottomSheet<void>(
@@ -22,8 +29,8 @@ void showCustomBottomSheet(BuildContext context) {
         padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
         child: SingleChildScrollView(
           child: Container(
-            height: 300,
-            decoration: BoxDecoration(
+            height: 600,
+            decoration:const BoxDecoration(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20.0),
                 topRight: Radius.circular(20.0),
@@ -48,7 +55,39 @@ void showCustomBottomSheet(BuildContext context) {
                   onSubmit: (v) {},
                   controller: imageController,
                   type: TextInputType.text,
+                ),   UpdateTextfield(
+                  labelText: "price ",
+                  hintText: "Enter price ",
+                  onChanged: (value) {},
+                  onSubmit: (v) {},
+                  controller: priceController,
+                  type: TextInputType.text,
                 ),
+                UpdateTextfield(
+                  labelText: "description ",
+                  hintText: "Enter description",
+                  onChanged: (value) {},
+                  onSubmit: (v) {},
+                  controller: descriptionController,
+                  type: TextInputType.text,
+                ),
+                UpdateTextfield(
+                  labelText: "doc id",
+                  hintText: "Enter doc id ",
+                  onChanged: (value) {},
+                  onSubmit: (v) {},
+                  controller: docController,
+                  type: TextInputType.text,
+                ),
+                UpdateTextfield(
+                  labelText: " category id",
+                  hintText: "Enter category id ",
+                  onChanged: (value) {},
+                  onSubmit: (v) {},
+                  controller: categoryController,
+                  type: TextInputType.text,
+                ),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -60,26 +99,29 @@ void showCustomBottomSheet(BuildContext context) {
                         }
                       },
                       title: "Cancel",
+                      colors: AppColors.white,
                       horizontalPadding: 16,
                       pixels: 50,
                     ),
                     UpdateButton(
                       onTap: () {
-                        context.read<CategoriesViewModel>().insertCategory(
-                          CategoryModel(
-                            imageUrl:
-                            "https://static-assets.business.amazon.com/assets/in/24th-jan/705_Website_Blog_Appliances_1450x664.jpg.transform/1450x664/image.jpg",
-                            categoryName: nameController.text,
-                            docId: "",
-                          ),
+                        context.read<ProductsViewModel>().insertProducts(
+                         ProductModel
+                           (price:priceController.text.length.toDouble(),
+                             imageUrl: imageController.text,
+                             productName: nameController.text,
+                             docId: docController.text,
+                             productDescription: descriptionController.text,
+                             categoryId: categoryController.text),
                           context,
                         );
+                        // LocalNotificationService().showNotification(title: "${nameController.text} nomli mahsulot qo'shildi", body: "Bizni mahsulot haqida batafsil malumot olasiz", id: 3);
                         Navigator.pop(context);
                         if (nameController.text.isNotEmpty ) {
                           // Form is valid, perform actions
                           scaffold.showSnackBar(
                             SnackBar(
-                              content: Text('Form submitted successfully!'),
+                              content:const Text('Form submitted successfully!'),
                               action: SnackBarAction(
                                 label: 'Dismiss',
                                 onPressed: () => scaffold.hideCurrentSnackBar(),
@@ -108,16 +150,16 @@ Future<bool> showConfirmationDialog(BuildContext context) async {
   return await showDialog(
     context: context,
     builder: (context) => AlertDialog(
-      title: Text('Are you sure you want to cancel?'),
-      content: Text('This will close the form without saving any changes.'),
+      title:const Text('Are you sure you want to cancel?'),
+      content:const Text('This will close the form without saving any changes.'),
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context, false), // Close dialog and return false
-          child: Text('No'),
+          child:const Text('No'),
         ),
         TextButton(
           onPressed: () => Navigator.pop(context, true), // Close dialog and return true (cancel)
-          child: Text('Yes'),
+          child:const Text('Yes'),
         ),
       ],
     ),
