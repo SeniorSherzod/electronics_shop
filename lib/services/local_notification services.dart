@@ -49,7 +49,7 @@ class LocalNotificationService {
                   return ProfileScreen();
                 }));
           }
-          print(notification.payload);
+          debugPrint(notification.payload);
         });
 
     await flutterLocalNotificationsPlugin
@@ -101,9 +101,9 @@ class LocalNotificationService {
               androidNotificationChannel.name,
               priority: Priority.max,
               playSound: true,
-              icon: "app_icon",
+              icon: "e_commerce1",
               showProgress: true,
-              largeIcon: const DrawableResourceAndroidBitmap('app_icon'),
+              largeIcon: const DrawableResourceAndroidBitmap('e_commerce1'),
             ),
             iOS: DarwinNotificationDetails(
               subtitle: title,
@@ -149,9 +149,9 @@ class LocalNotificationService {
           androidNotificationChannel.name,
           priority: Priority.max,
           playSound: true,
-          icon: "app_icon",
+          icon: "e_commerce1",
           showProgress: true,
-          largeIcon: const DrawableResourceAndroidBitmap('app_icon'),
+          largeIcon: const DrawableResourceAndroidBitmap('e_commerce1'),
         ),
       ),
     );

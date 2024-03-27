@@ -12,6 +12,9 @@ class ProductsViewModel extends ChangeNotifier {
   bool get getLoader => _isLoading;
 
   List<ProductModel> categoryProduct = [];
+  int productNum=0;
+  List<int> idCount = [];
+
 
   Stream<List<ProductModel>> listenProducts() => FirebaseFirestore.instance
       .collection(AppConstants.products)
@@ -35,8 +38,10 @@ class ProductsViewModel extends ChangeNotifier {
   }
 
   insertProducts(ProductModel productModel, BuildContext context) async {
+    print(productModel.productName);
     try {
       _notify(true);
+      productNum++;
       var cf = await FirebaseFirestore.instance
           .collection(AppConstants.products)
           .add(productModel.toJson());
@@ -46,7 +51,8 @@ class ProductsViewModel extends ChangeNotifier {
           .doc(cf.id)
           .update({"doc_id": cf.id});
 
-      LocalNotificationService().showNotification(title: "${productModel.productName} nomli mahsulot qo'shildi", body: "Bizni mahsulot haqida batafsil malumot olasiz", id: 3);
+      LocalNotificationService.localNotificationService.showNotification(title: "${productModel.productName} nomli mahsulot qo'shildi", body: "Bizni mahsulot haqida batafsil malumot olasiz", id:productNum );
+      idCount.add(productNum);
 
       _notify(false);
     } on FirebaseException catch (error) {
@@ -57,7 +63,10 @@ class ProductsViewModel extends ChangeNotifier {
       );
     }
   }
+void clearAllNotification ( ){
 
+    LocalNotificationService.localNotificationService.cancelAll();
+}
   updateProduct(ProductModel productModel, BuildContext context) async {
     try {
       _notify(true);

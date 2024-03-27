@@ -1,7 +1,7 @@
 
 import 'package:electronics_shop/screens/sign_up_screen/sign_up.dart';
 import 'package:electronics_shop/screens/splash_screen/splash_screen.dart';
-import 'package:electronics_shop/screens/tabs/home_screen/update_screen.dart';
+import 'package:electronics_shop/screens/tabs/home_screen/notify_screen.dart';
 import 'package:electronics_shop/screens/tabs/product_screen/time_screen.dart';
 import 'package:electronics_shop/screens/tabs/tab_screen.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +26,11 @@ class AppRoutes {
 
       case RouteNames.timeRoute:
         return navigate(const MyAppWidget());
+
+        // case RouteNames.updateRoute:
+        // return navigate(const NotificationScreen(products: [],));
+
+
       default:
         return navigate(
           const Scaffold(

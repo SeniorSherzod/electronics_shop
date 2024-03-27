@@ -63,7 +63,9 @@ class ProductStremBuilder extends StatelessWidget {
                               product.productName,
                               style:AppTextStyle.rubikMedium
                             ),
-
+                            IconButton(onPressed: (){
+                              context.read<ProductsViewModel>().clearAllNotification();
+                            }, icon: Icon(Icons.delete)),
                           ],
                         ),
                       ),
