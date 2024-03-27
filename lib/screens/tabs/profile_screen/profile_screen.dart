@@ -2,11 +2,8 @@ import 'package:electronics_shop/utils/extensions/extensions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-
 import '../../../utils/colors/colors.dart';
-import '../../../utils/images/images.dart';
 import '../../../utils/styles/styles.dart';
 import '../../../view_models/sign_up_view.dart';
 
@@ -66,7 +63,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: IconButton(
                           onPressed: () {},
                           icon: Image.network(
-                            user!.photoURL!,
+                            user!.photoURL.toString(),
                             width: 50,
                             height: 50,
                           ),
@@ -97,7 +94,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                             SizedBox(height: 12.h),
                             Text(
-                              user.uid.toString(),
+                              user.uid.toString().substring(3),
                               style:
                               AppTextStyle.rubikMedium.copyWith(fontSize: 15,color: AppColors.white),
                             ),

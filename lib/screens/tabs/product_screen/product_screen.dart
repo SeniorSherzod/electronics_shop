@@ -100,9 +100,9 @@ class _ProductsScreenState extends State<ProductsScreen> {
                           context
                               .read<ProductsViewModel>()
                               .clearAllNotification();
-                          setState(() {
+                          // setState(() {
                             products = [];
-                          });
+                          // });
                         },
                         icon: Icon(Icons.delete),
                       ),

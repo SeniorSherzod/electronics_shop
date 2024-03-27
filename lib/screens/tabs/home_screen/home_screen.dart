@@ -1,4 +1,6 @@
 import 'package:electronics_shop/models/category_model.dart';
+import 'package:electronics_shop/screens/news_screen/news_add_screen.dart';
+import 'package:electronics_shop/screens/news_screen/news_read_screen.dart';
 import 'package:electronics_shop/screens/tabs/home_screen/widgets/category_stream_builder.dart';
 import 'package:electronics_shop/screens/tabs/home_screen/widgets/product_grid_view.dart';
 import 'package:electronics_shop/utils/extensions/extensions.dart';
@@ -51,8 +53,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   Row(
                     children: [
                       IconButton(
-                        onPressed: () {},
-                        icon: SvgPicture.asset(AppImages.like),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => NewsScreen()),
+                          );
+                        },
+                        icon: Icon(Icons.article),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => NewsAddScreen()),
+                          );
+                        },
+                        icon: Icon(Icons.article_sharp,color: AppColors.white,),
                       ),
                       IconButton(
                         onPressed: () {

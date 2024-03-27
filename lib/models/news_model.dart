@@ -20,6 +20,10 @@ class News {
     );
   }
 
+  get id => null;
+
+
+
   Map<String, dynamic> toJson() {
     return {
       'title': title,

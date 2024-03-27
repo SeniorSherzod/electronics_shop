@@ -58,7 +58,7 @@ class CategoryStreamBuilder extends StatelessWidget {
                           style: AppTextStyle.rubikMedium,
                         ),
                         SizedBox(height: 4.h),
-                        Text("ID: ${category.docId.substring(0, 3)}"),
+                        Text("ID: ${category.docId}"),
                         IconButton(
                           onPressed: () {
                             showEditCustomBottomSheet(context,

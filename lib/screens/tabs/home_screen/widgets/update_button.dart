@@ -32,7 +32,7 @@ class UpdateButton extends StatelessWidget {
     height = MediaQuery.of(context).size.height;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-      width: width/2,
+      width: width/3,
       height: pixels,
       child: TextButton(
         style: TextButton.styleFrom(

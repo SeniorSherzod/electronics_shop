@@ -1,13 +1,10 @@
 import 'package:electronics_shop/models/product_model.dart';
 import 'package:electronics_shop/screens/tabs/home_screen/widgets/update_button.dart';
 import 'package:electronics_shop/screens/tabs/home_screen/widgets/update_textfield.dart';
-import 'package:electronics_shop/services/local_notification%20services.dart';
 import 'package:electronics_shop/view_models/product_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../../models/category_model.dart';
 import '../../../../utils/colors/colors.dart';
-import '../../../../view_models/categoriy_view_model.dart';
 
 void showAddProductCustomBottomSheet(BuildContext context) {
   final nameController = TextEditingController();

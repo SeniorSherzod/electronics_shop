@@ -2,6 +2,7 @@ import 'package:electronics_shop/screens/routes.dart';
 import 'package:electronics_shop/services/local_notification%20services.dart';
 import 'package:electronics_shop/utils/colors/colors.dart';
 import 'package:electronics_shop/view_models/categoriy_view_model.dart';
+import 'package:electronics_shop/view_models/news_view_model.dart';
 import 'package:electronics_shop/view_models/product_view_model.dart';
 import 'package:electronics_shop/view_models/sign_up_view.dart';
 import 'package:electronics_shop/view_models/tab_view_model.dart';
@@ -21,6 +22,7 @@ Future<void> main() async {
   await configureLocalTimeZone();
   await Firebase.initializeApp(
 options: DefaultFirebaseOptions.currentPlatform);
+  FirebaseMessaging.instance.subscribeToTopic("news");
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   runApp(MultiProvider(
     providers: [
@@ -28,6 +30,7 @@ options: DefaultFirebaseOptions.currentPlatform);
       ChangeNotifierProvider(create: (_) => TabViewModel()),
       ChangeNotifierProvider(create: (_) => CategoriesViewModel()),
       ChangeNotifierProvider(create: (_) => ProductsViewModel()),
+      ChangeNotifierProvider(create: (_) => NewsViewModel()),
     ],
     child: const MyApp(),
   ));

@@ -1,6 +1,5 @@
 import 'package:electronics_shop/screens/tabs/browse_screen/widgets/product_grid_view.dart';
 import 'package:electronics_shop/screens/tabs/browse_screen/widgets/three_button.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
