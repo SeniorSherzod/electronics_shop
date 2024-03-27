@@ -82,7 +82,7 @@ class AddNewsBottomSheetContent extends StatelessWidget {
                           Navigator.pop(context);
                           if (nameController.text.isNotEmpty ) {
                             String messageId = await ApiProvider().sendNotificationToUsers(
-                              fcmToken: fcmToken,
+                              topicName: "news",
                               title: "Bu test notification",
                               body: "Yana test notiifcation",
                             );
@@ -146,7 +146,7 @@ class AddNewsBottomSheetContent extends StatelessWidget {
                           Navigator.pop(context);
                           if (nameController.text.isNotEmpty ) {
                             String messageId = await ApiProvider().sendNotificationToUsers(
-                              fcmToken: fcmToken,
+                              topicName: "news",
                               title: "Bu test notification",
                               body: "Yana test notiifcation",
                             );

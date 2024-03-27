@@ -4,9 +4,11 @@ import 'package:electronics_shop/screens/news_screen/news_read_screen.dart';
 import 'package:electronics_shop/screens/tabs/home_screen/widgets/category_stream_builder.dart';
 import 'package:electronics_shop/screens/tabs/home_screen/widgets/product_grid_view.dart';
 import 'package:electronics_shop/utils/extensions/extensions.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../../../services/local_notification services.dart';
 import '../../../widgets/universal_search.dart';
 import 'widgets/bottom_sheet_add.dart';
 import '../../../utils/colors/colors.dart';
@@ -22,6 +24,46 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final searchController = TextEditingController();
+  String fcmToken = "";
+
+  void init() async {
+    fcmToken = await FirebaseMessaging.instance.getToken() ?? "";
+    debugPrint("FCM TOKEN:$fcmToken");
+    final token = await FirebaseMessaging.instance.getAPNSToken();
+    debugPrint("getAPNSToken : ${token.toString()}");
+    LocalNotificationService.localNotificationService;
+    //Foreground
+    FirebaseMessaging.onMessage.listen(
+          (RemoteMessage remoteMessage) {
+        if (remoteMessage.notification != null) {
+          LocalNotificationService().showNotification(
+            title: remoteMessage.notification!.title!,
+            body: remoteMessage.notification!.body!,
+            id: DateTime.now().second.toInt(),
+          );
+
+          debugPrint(
+              "FOREGROUND NOTIFICATION:${remoteMessage.notification!.title}");
+        }
+      },
+    );
+    //Background
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage remoteMessage) {
+      debugPrint("ON MESSAGE OPENED APP:${remoteMessage.notification!.title}");
+    });
+    // Terminated
+    FirebaseMessaging.instance.getInitialMessage().then((message) {
+      if (message != null) {
+        debugPrint("TERMINATED:${message.notification?.title}");
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    init();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
