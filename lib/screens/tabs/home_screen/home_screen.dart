@@ -1,6 +1,7 @@
 import 'package:electronics_shop/models/category_model.dart';
 import 'package:electronics_shop/screens/news_screen/news_add_screen.dart';
 import 'package:electronics_shop/screens/news_screen/news_read_screen.dart';
+import 'package:electronics_shop/screens/tabs/home_screen/widgets/add_category_screen.dart';
 import 'package:electronics_shop/screens/tabs/home_screen/widgets/category_stream_builder.dart';
 import 'package:electronics_shop/screens/tabs/home_screen/widgets/product_grid_view.dart';
 import 'package:electronics_shop/utils/extensions/extensions.dart';
@@ -8,6 +9,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../services/local_notification services.dart';
 import '../../../widgets/universal_search.dart';
 import 'widgets/bottom_sheet_add.dart';
@@ -23,6 +25,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final ImagePicker picker = ImagePicker();
+
+  String imageUrl = "";
+  String storagePath = "";
   final searchController = TextEditingController();
   String fcmToken = "";
 
@@ -114,13 +120,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       IconButton(
                         onPressed: () {
-                          showCustomBottomSheet(context,
-                          CategoryModel(
-                            categoryName:"",
-                            imageUrl: "",
-                            docId: ""
-                          )
-                          );
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => AddCategoryScreen()));
+                          // showCustomBottomSheet(context,
+                          // CategoryModel(
+                          //   storagePath:storagePath ,
+                          //   categoryName:"",
+                          //   imageUrl: "",
+                          //   docId: ""
+                          // )
+                          // );
                         },
                         icon: const Icon(Icons.add),
                       ),
@@ -146,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: 30.h,),
             SizedBox(
               height: 250.h,
-              child:const CategoryStreamBuilder(),
+              child: CategoryStreamBuilder(),
             ),
             SizedBox(height: 20.h),
             Row(

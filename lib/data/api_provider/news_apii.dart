@@ -33,7 +33,7 @@ class ApiProvider {
               "https://top.uz/upload/iblock/0de/0dec725e4583a0698a8732ca646a4994.png",
               "news_title": "Test",
               "news_text":
-              "Finland's national carrier Finnair has started weighing passengers on its flights from the capital city of Helsinki. The weigh-ins are being done on a voluntary basis and are completely anonymous. A company spokesperson said the new initiative is to ensure safety standards on flights are adhered to. He said any airplane should not exceed the prescribed maximum weight for safe take-offs and landings."
+              "Finland's national carrier Finn air has started weighing passengers on its flights from the capital city of Helsinki. The weigh-ins are being done on a voluntary basis and are completely anonymous. A company spokesperson said the new initiative is to ensure safety standards on flights are adhered to. He said any airplane should not exceed the prescribed maximum weight for safe take-offs and landings."
             }
           },
         ),

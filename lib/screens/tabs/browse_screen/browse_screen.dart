@@ -1,3 +1,4 @@
+import 'package:electronics_shop/screens/tabs/browse_screen/permissions_screen.dart';
 import 'package:electronics_shop/screens/tabs/browse_screen/widgets/product_grid_view.dart';
 import 'package:electronics_shop/screens/tabs/browse_screen/widgets/three_button.dart';
 import 'package:flutter/material.dart';
@@ -58,17 +59,13 @@ class _BrowseScreenState extends State<BrowseScreen> {
                         ),
                         IconButton(
                           onPressed: () {
-                            context.read<CategoriesViewModel>().insertCategory(
-                                  CategoryModel(
-                                    imageUrl:
-                                        "https://static-assets.business.amazon.com/assets/in/24th-jan/705_Website_Blog_Appliances_1450x664.jpg.transform/1450x664/image.jpg",
-                                    categoryName: "Maishiy texnikalar",
-                                    docId: "",
-                                  ),
-                                  context,
-                                );
-                          },
-                          icon: const Icon(Icons.add),
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => PermissonsScreen(),
+                              ),
+                            );                          },
+                          icon: const Icon(Icons.settings),
                         ),
                       ],
                     ),

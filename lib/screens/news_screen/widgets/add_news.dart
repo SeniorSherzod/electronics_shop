@@ -74,6 +74,7 @@ class AddNewsBottomSheetContent extends StatelessWidget {
                         onTap: () async {
                           context.read<NewsViewModel>().addNews(
                               News(
+                                id: docController.text,
                                   title: nameController.text,
                                   description: descriptionController.text,
                                   imageUrl: imageController.text,
@@ -99,13 +100,14 @@ class AddNewsBottomSheetContent extends StatelessWidget {
                         },
                         title: "send by topic",
                         colorText: AppColors.white,
-                        horizontalPadding: 16,
-                        pixels: 50,
+                        horizontalPadding: 0,
+                        pixels: 45,
                       ),
                       UpdateButton(
                         onTap: () async {
                           context.read<NewsViewModel>().addNews(
                               News(
+                                id: docController.text,
                                   title: nameController.text,
                                   description: descriptionController.text,
                                   imageUrl: imageController.text,
@@ -131,13 +133,14 @@ class AddNewsBottomSheetContent extends StatelessWidget {
                         },
                         title: "user",
                         colorText: AppColors.white,
-                        horizontalPadding: 16,
-                        pixels: 50,
+                        horizontalPadding: 0,
+                        pixels: 45,
                       ),
                       UpdateButton(
                         onTap: () async {
                           context.read<NewsViewModel>().addNews(
                               News(
+                                id: docController.text,
                                   title: nameController.text,
                                   description: descriptionController.text,
                                   imageUrl: imageController.text,
@@ -163,8 +166,8 @@ class AddNewsBottomSheetContent extends StatelessWidget {
                         },
                         title: "users",
                         colorText: AppColors.white,
-                        horizontalPadding: 16,
-                        pixels: 50,
+                        horizontalPadding: 0,
+                        pixels: 45,
                       ),
 
                     ],

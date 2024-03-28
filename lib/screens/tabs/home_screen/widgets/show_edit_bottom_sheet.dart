@@ -6,7 +6,7 @@ import '../../../../models/category_model.dart';
 import '../../../../utils/colors/colors.dart';
 import '../../../../view_models/categoriy_view_model.dart';
 
-void showEditCustomBottomSheet(BuildContext context,CategoryModel categoryModel) {
+void showEditCustomBottomSheet(BuildContext context,CategoryModel categoryModel,) {
   final nameController = TextEditingController(text: categoryModel.categoryName);
   final imageController = TextEditingController(text: categoryModel.imageUrl);
 
@@ -68,14 +68,14 @@ void showEditCustomBottomSheet(BuildContext context,CategoryModel categoryModel)
                       pixels: 50,
                     ),
                     UpdateButton(
-                      onTap: () {
+                      onTap: () async {
+                        categoryModel.categoryName!=nameController.text;
                         context.read<CategoriesViewModel>().updateCategory(
                           categoryModel,
                           context,
                         );
                         Navigator.pop(context);
                         if (nameController.text.isNotEmpty ) {
-                          // Form is valid, perform actions
                           scaffold.showSnackBar(
                             SnackBar(
                               content:const Text('Form submitted successfully!'),

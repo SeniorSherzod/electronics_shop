@@ -1,13 +1,14 @@
-
 class CategoryModel {
   final String docId;
   final String categoryName;
   final String imageUrl;
+  final String storagePath;
 
   CategoryModel({
     required this.imageUrl,
     required this.categoryName,
     required this.docId,
+    required this.storagePath,
   });
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) {
@@ -15,6 +16,7 @@ class CategoryModel {
       docId: json["doc_id"] as String? ?? "",
       imageUrl: json["image_url"] as String? ?? "",
       categoryName: json["category_name"] as String? ?? "",
+      storagePath: json["storage_path"] as String? ?? "",
     );
   }
 
@@ -23,6 +25,7 @@ class CategoryModel {
       "doc_id": "",
       "image_url": imageUrl,
       "category_name": categoryName,
+      "storage_path": storagePath,
     };
   }
 
@@ -30,6 +33,7 @@ class CategoryModel {
     return {
       "image_url": imageUrl,
       "category_name": categoryName,
+      "storage_path": storagePath,
     };
   }
 }

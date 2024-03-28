@@ -1,5 +1,7 @@
 import 'package:electronics_shop/screens/tabs/home_screen/notify_screen.dart';
 import 'package:electronics_shop/screens/tabs/home_screen/widgets/product_grid_view.dart';
+import 'package:electronics_shop/screens/tabs/product_screen/add_product_screens.dart';
+import 'package:electronics_shop/screens/tabs/product_screen/widgets/add_product.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -132,31 +134,34 @@ class _ProductsScreenState extends State<ProductsScreen> {
                       ),
                       IconButton(
                         onPressed: () {
-                          context.read<ProductsViewModel>().insertProducts(
-                            ProductModel(
-                              price: 12.5,
-                              imageUrl:
-                              "https://w7.pngwing.com/pngs/961/642/png-transparent-iphone-14-pro-thumbnail.png",
-                              productName: "I phone 14",
-                              docId: "",
-                              productDescription: "productDescription",
-                              categoryId: "kcggCJzOEz7gH1LQy44x",
-                            ),
-                            context,
-                          );
-                          setState(() {
-                            products.add(
-                              ProductModel(
-                                price: 12.5,
-                                imageUrl:
-                                "https://w7.pngwing.com/pngs/961/642/png-transparent-iphone-14-pro-thumbnail.png",
-                                productName: "I phone 14",
-                                docId: "",
-                                productDescription: "productDescription",
-                                categoryId: "kcggCJzOEz7gH1LQy44x",
-                              ),
-                            );
-                          });
+                          Navigator.push(context, MaterialPageRoute(builder: (context)
+                          => AddProductScreen()));
+                          // showAddProductCustomBottomSheet(context);
+                          // context.read<ProductsViewModel>().insertProducts(
+                          //   ProductModel(
+                          //     price: 12.5,
+                          //     imageUrl:
+                          //     "https://w7.pngwing.com/pngs/961/642/png-transparent-iphone-14-pro-thumbnail.png",
+                          //     productName: "I phone 14",
+                          //     docId: "",
+                          //     productDescription: "productDescription",
+                          //     categoryId: "kcggCJzOEz7gH1LQy44x",
+                          //   ),
+                          //   context,
+                          // );
+                          // setState(() {
+                          //   products.add(
+                          //     ProductModel(
+                          //       price: 12.5,
+                          //       imageUrl:
+                          //       "https://w7.pngwing.com/pngs/961/642/png-transparent-iphone-14-pro-thumbnail.png",
+                          //       productName: "I phone 14",
+                          //       docId: "",
+                          //       productDescription: "productDescription",
+                          //       categoryId: "kcggCJzOEz7gH1LQy44x",
+                          //     ),
+                          //   );
+                          // });
                         },
                         icon: const Icon(Icons.add),
                       ),

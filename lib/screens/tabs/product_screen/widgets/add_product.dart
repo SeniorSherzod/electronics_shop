@@ -4,6 +4,7 @@ import 'package:electronics_shop/screens/tabs/home_screen/widgets/update_textfie
 import 'package:electronics_shop/view_models/product_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../../services/local_notification services.dart';
 import '../../../../utils/colors/colors.dart';
 
 void showAddProductCustomBottomSheet(BuildContext context) {
@@ -52,7 +53,8 @@ void showAddProductCustomBottomSheet(BuildContext context) {
                   onSubmit: (v) {},
                   controller: imageController,
                   type: TextInputType.text,
-                ),   UpdateTextfield(
+                ),
+                UpdateTextfield(
                   labelText: "price ",
                   hintText: "Enter price ",
                   onChanged: (value) {},
@@ -104,7 +106,8 @@ void showAddProductCustomBottomSheet(BuildContext context) {
                       onTap: () {
                         context.read<ProductsViewModel>().insertProducts(
                          ProductModel
-                           (price:priceController.text.length.toDouble(),
+                           (storagePath: "",
+                             price:priceController.text.length.toDouble(),
                              imageUrl: imageController.text,
                              productName: nameController.text,
                              docId: docController.text,
@@ -112,7 +115,7 @@ void showAddProductCustomBottomSheet(BuildContext context) {
                              categoryId: categoryController.text),
                           context,
                         );
-                        // LocalNotificationService().showNotification(title: "${nameController.text} nomli mahsulot qo'shildi", body: "Bizni mahsulot haqida batafsil malumot olasiz", id: 3);
+                        LocalNotificationService().showNotification(title: "${nameController.text} nomli mahsulot qo'shildi", body: "Bizni mahsulot haqida batafsil malumot olasiz", id: 3);
                         Navigator.pop(context);
                         if (nameController.text.isNotEmpty ) {
                           // Form is valid, perform actions
@@ -141,6 +144,7 @@ void showAddProductCustomBottomSheet(BuildContext context) {
       );
     },
   );
+
 }
 
 Future<bool> showConfirmationDialog(BuildContext context) async {

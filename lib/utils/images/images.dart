@@ -33,6 +33,7 @@ class AppImages {
 //.jpg
   //json
   static const String lotty = "assets/lottie/lotty.json";
+  static const String empty = "assets/lottie/empty.json";
 
 //.gif
 }
