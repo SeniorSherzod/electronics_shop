@@ -2,6 +2,7 @@
 import 'package:electronics_shop/screens/sign_up_screen/sign_up.dart';
 import 'package:electronics_shop/screens/splash_screen/splash_screen.dart';
 import 'package:electronics_shop/screens/tabs/home_screen/notify_screen.dart';
+import 'package:electronics_shop/screens/tabs/order_history/order_history.dart';
 import 'package:electronics_shop/screens/tabs/product_screen/time_screen.dart';
 import 'package:electronics_shop/screens/tabs/tab_screen.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +28,8 @@ class AppRoutes {
       case RouteNames.timeRoute:
         return navigate(const MyAppWidget());
 
-        // case RouteNames.updateRoute:
-        // return navigate(const NotificationScreen(products: [],));
+        case RouteNames.orderRoute:
+        return navigate( OrderScreen());
 
 
       default:
@@ -55,4 +56,5 @@ class RouteNames {
   static const String boardingRoute = "/boarding_route";
   static const String updateRoute = "/updating_route";
   static const String timeRoute = "/time_route";
+  static const String orderRoute = "/order_route";
 }

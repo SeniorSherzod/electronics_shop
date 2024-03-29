@@ -45,7 +45,7 @@ class UpdateTextfield extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
             ),
             child: TextField(
-
+              focusNode: FocusNode(),
               controller: controller,
               keyboardType: keyboardType,
               onChanged: onChanged,

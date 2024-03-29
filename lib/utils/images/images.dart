@@ -6,6 +6,8 @@ class AppImages {
   static const String img_2 = "assets/images/img_2.png";
   static const String img_3 = "assets/images/img_3.png";
   static const String img_4 = "assets/images/img_4.png";
+  static const String maps = "assets/images/maps.png";
+  static const String location = "assets/images/location.png";
 
 
   //.svg
@@ -19,7 +21,7 @@ class AppImages {
   static const String bottomprofile = "assets/icons/b_profile.svg";
   static const String emails = "assets/icons/emails.svg";
   static const String password = "assets/icons/password.svg";
-  static const String home = "assets/icons/home.svg";
+  static const String homes = "assets/icons/homes.svg";
   static const String order = "assets/icons/order.svg";
   static const String search = "assets/icons/search.svg";
   static const String profile = "assets/icons/profile.svg";
@@ -31,6 +33,10 @@ class AppImages {
 
 
 //.jpg
+  static const String home = "assets/images/home.png";
+  static const String work = "assets/images/work.png";
+  static const String current = "assets/images/current.png";
+
   //json
   static const String lotty = "assets/lottie/lotty.json";
   static const String empty = "assets/lottie/empty.json";

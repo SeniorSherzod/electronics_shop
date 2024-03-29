@@ -3,6 +3,8 @@ import 'package:electronics_shop/services/local_notification%20services.dart';
 import 'package:electronics_shop/utils/colors/colors.dart';
 import 'package:electronics_shop/view_models/categoriy_view_model.dart';
 import 'package:electronics_shop/view_models/image_view_models.dart';
+import 'package:electronics_shop/view_models/location_view_model.dart';
+import 'package:electronics_shop/view_models/maps_view_model.dart';
 import 'package:electronics_shop/view_models/news_view_model.dart';
 import 'package:electronics_shop/view_models/product_view_model.dart';
 import 'package:electronics_shop/view_models/sign_up_view.dart';
@@ -33,6 +35,8 @@ options: DefaultFirebaseOptions.currentPlatform);
       ChangeNotifierProvider(create: (_) => ProductsViewModel()),
       ChangeNotifierProvider(create: (_) => NewsViewModel()),
       ChangeNotifierProvider(create: (_) => ImageViewModel()),
+      ChangeNotifierProvider(create: (_) => LocationViewModel()),
+      ChangeNotifierProvider(create: (_) => MapsViewModel()),
     ],
     child: const MyApp(),
   ));

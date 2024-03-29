@@ -23,7 +23,7 @@ class _TabScreenState extends State<TabScreen> {
     HomeScreen(),
     BrowseScreen(),
     ProductsScreen(),
-    // OrderHistory(),
+    OrderScreen(),
     ProfileScreen()
   ];
 
@@ -53,11 +53,11 @@ class _TabScreenState extends State<TabScreen> {
             label: "Store",
             activeIcon: SvgPicture.asset(AppImages.store,color: AppColors.main,),
           ),
-          // BottomNavigationBarItem(
-          //   icon:SvgPicture.asset(AppImages.order),
-          //   label: "Order history",
-          //   activeIcon: SvgPicture.asset(AppImages.order,color: AppColors.main,),
-          // ),
+          BottomNavigationBarItem(
+            icon:SvgPicture.asset(AppImages.order),
+            label: "Order history",
+            activeIcon: SvgPicture.asset(AppImages.order,color: AppColors.main,),
+          ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(AppImages.profile),
             label: "Profile",
