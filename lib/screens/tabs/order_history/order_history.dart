@@ -75,7 +75,7 @@ class _OrderScreenState extends State<OrderScreen> {
                               onPressed: () async{
                                 await context
                                     .read<AddressesViewModel>()
-                                    .deleteAddress(myAddress.docId, context);
+                                    .deleteCategory(myAddress.docId, context);
                                 if(!context.mounted) return;
                                 context.read<AddressesViewModel>().loadAddresses();
                               },

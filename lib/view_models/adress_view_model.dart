@@ -86,24 +86,39 @@ class AddressesViewModel extends ChangeNotifier {
     }
   }
 
-  Future<void> deleteAddress(String addressId,BuildContext context) async {
+  // Future<void> deleteAddress(String addressId,BuildContext context) async {
+  //   try {
+  //     _notify(true);
+  //     await FirebaseFirestore.instance
+  //         .collection(AppConstants.addresses)
+  //         .doc(addressId)
+  //         .delete();
+  //   loadAddresses();
+  //     _notify(false);
+  //   } on FirebaseException catch (error) {
+  //     if (!context.mounted) return;
+  //     showSnackbar(
+  //       context: context,
+  //       message: error.code,
+  //     );
+  //   }
+  // }
+  deleteCategory(
+      String docId,
+      BuildContext context,
+      ) async {
     try {
       _notify(true);
       await FirebaseFirestore.instance
           .collection(AppConstants.addresses)
-          .doc(addressId)
+          .doc(docId)
           .delete();
-    loadAddresses();
+
       _notify(false);
     } on FirebaseException catch (error) {
-      if (!context.mounted) return;
-      showSnackbar(
-        context: context,
-        message: error.code,
-      );
+      return error;
     }
   }
-
   void _notify(bool v) {
     _isLoading = v;
     notifyListeners();

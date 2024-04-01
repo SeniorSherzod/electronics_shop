@@ -67,6 +67,7 @@ class PlaceModel {
   Map<String, dynamic> toJson() {
     return {
       'id': "",
+      'doc_id': docId,
       'latLng': {
         'latitude': latLng.latitude,
         'longitude': latLng.longitude,
