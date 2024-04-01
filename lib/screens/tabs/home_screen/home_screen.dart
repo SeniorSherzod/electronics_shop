@@ -165,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Text("see all"))
               ],
             ),
-            const ProductStremBuilder(),
+            const ProductStreamBuilder(),
           ],
         ),
       ),

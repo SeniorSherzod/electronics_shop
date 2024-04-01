@@ -1,4 +1,6 @@
 
+import 'dart:ffi';
+
 import 'package:electronics_shop/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -19,6 +21,7 @@ class UpdateTextfield extends StatelessWidget {
     required this.type,
     this.labelText,
     this.suffix,
+    this.width,
   });
 
   final String hintText;
@@ -30,6 +33,7 @@ class UpdateTextfield extends StatelessWidget {
   final TextEditingController controller;
   final TextInputType type;
   final String? labelText;
+  final Double? width;
 
   @override
   Widget build(BuildContext context) {

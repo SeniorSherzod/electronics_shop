@@ -1,93 +1,123 @@
+import 'package:electronics_shop/screens/tabs/home_screen/widgets/update_button.dart';
+import 'package:electronics_shop/screens/tabs/order_history/yandex/google_maps.dart';
+import 'package:electronics_shop/screens/tabs/order_history/yandex/update_address.dart';
+import 'package:electronics_shop/utils/colors/colors.dart';
 import 'package:electronics_shop/utils/extensions/extensions.dart';
-import 'package:electronics_shop/utils/images/images.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
-import '../../../utils/colors/colors.dart';
-import '../../../utils/styles/styles.dart';
-import '../../../view_models/location_view_model.dart';
-import '../../../view_models/maps_view_model.dart';
-import '../../../widgets/universal_search.dart';
-import 'maps_google.dart';
+import '../../../utils/images/images.dart';
+import '../../../view_models/adress_view_model.dart';
 
-class OrderScreen extends StatelessWidget {
-   OrderScreen({super.key});
-  final searchController=TextEditingController();
+class OrderScreen extends StatefulWidget {
+  const OrderScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    context.read<LocationViewModel>();
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      appBar: AppBar(
-        systemOverlayStyle:const SystemUiOverlayStyle(
-          statusBarColor: Colors.transparent,
-          statusBarIconBrightness: Brightness.light,
-          statusBarBrightness: Brightness.dark,
-        ),
-        elevation: 0,
-        backgroundColor: AppColors.main,
-        toolbarHeight: 120,
-        flexibleSpace: Padding(
-          padding: const EdgeInsets.only(left: 10, right: 10),
-          child: Column(
-            children: [
-              SizedBox(height: 50.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Order to Map",
-                    style: AppTextStyle.rubikMedium.copyWith(
-                      fontSize: 25,
-                      color: AppColors.white,
-                    ),
-                  ),
+  State<OrderScreen> createState() => _OrderScreenState();
+}
 
-                ],
-              ),
-              UniversalSearch(
-                prefix: SvgPicture.asset(AppImages.search),
-                hintText: "search places",
-                onChanged: (value) {},
-                onSubmit: (v) {},
-                controller: searchController,
-                type: TextInputType.text,
-              ),
-            ],
-          ),
-        ),
+class _OrderScreenState extends State<OrderScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: AppColors.main,
+        title: const Text("My Addresses"),
       ),
-      body: Center(
-        child: TextButton(
-          onPressed: () {
-            LatLng? latLng = context.read<LocationViewModel>().latLng;
-            if (latLng != null) {
-              Provider.of<MapsViewModel>(context, listen: false)
-                  .setLatInitialLong(latLng);
+      body: Column(
+        children: [
+          Expanded(
+            child: Consumer<AddressesViewModel>(
+              builder: (context, viewModel, child) {
+                if (viewModel.myAddresses.isEmpty) {
+                  return Center(
+                    child: Lottie.asset(AppImages.empty),
+                  );
+                }
+                return ListView(children: [
+                  ...List.generate(viewModel.myAddresses.length, (index) {
+                    var myAddress = viewModel.myAddresses[index];
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return UpdateAddressScreen(
+                                placeModel: myAddress,
+                              );
+                            },
+                          ),
+                        );
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.all(12),
+                        height: 100,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: AppColors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: ListTile(
+                            title: Text(myAddress.placeName),
+                            subtitle: Text(myAddress.orientAddress),
+                            trailing: IconButton(
+                              onPressed: () async{
+                                await context
+                                    .read<AddressesViewModel>()
+                                    .deleteAddress(myAddress.docId, context);
+                                if(!context.mounted) return;
+                                context.read<AddressesViewModel>().loadAddresses();
+                              },
+                              icon: Icon(
+                                Icons.cancel_outlined,
+                              ),
+                            )),
+                      ),
+                    );
+                  })
+                ]);
+              },
+            ),
+          ),
+          SizedBox(
+            height: 60.h,
+          ),
+          UpdateButton(
+            onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return GoogleMapsScreen();
+                    return GoogleScreen(
+                      onTap: () {
+                        context.read<AddressesViewModel>().loadAddresses();
+                      },
+                    );
                   },
                 ),
               );
-            }
-          },
-          child: Row(
-            children: [
-              Text("GOOGLE MAPS OYNASI"),
-              SizedBox(
-                width: 20,
-                  child: Image.asset(AppImages.maps))
-            ],
+            },
+            title: "Yangi address qo'shish",
+            horizontalPadding: 20,
+            pixels: 50,
           ),
-        ),
+          SizedBox(
+            height: 20.h,
+          ),
+        ],
       ),
+      //
     );
   }
 }

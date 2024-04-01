@@ -40,28 +40,33 @@ class _TabScreenState extends State<TabScreen> {
         },
         items:  [
           BottomNavigationBarItem(
+            backgroundColor: AppColors.main,
             icon: SvgPicture.asset(AppImages.home),
             label: "Home",
-            activeIcon: SvgPicture.asset(AppImages.home,color: AppColors.main,),
+            activeIcon: SvgPicture.asset(AppImages.home,color: AppColors.black,),
           ),
           BottomNavigationBarItem(
+            backgroundColor: AppColors.main,
             icon: SvgPicture.asset(AppImages.search),
             label: "Browse",
-            activeIcon: SvgPicture.asset(AppImages.search,color: AppColors.main,),
+            activeIcon: SvgPicture.asset(AppImages.search,color: AppColors.black,),
           ), BottomNavigationBarItem(
+            backgroundColor: AppColors.main,
             icon: SvgPicture.asset(AppImages.store),
             label: "Store",
-            activeIcon: SvgPicture.asset(AppImages.store,color: AppColors.main,),
+            activeIcon: SvgPicture.asset(AppImages.store,color: AppColors.black,),
           ),
           BottomNavigationBarItem(
+            backgroundColor: AppColors.main,
             icon:SvgPicture.asset(AppImages.order),
             label: "Order history",
-            activeIcon: SvgPicture.asset(AppImages.order,color: AppColors.main,),
+            activeIcon: SvgPicture.asset(AppImages.order,color: AppColors.black,),
           ),
           BottomNavigationBarItem(
+            backgroundColor: AppColors.main,
             icon: SvgPicture.asset(AppImages.profile),
             label: "Profile",
-            activeIcon:SvgPicture.asset(AppImages.profile,color: AppColors.main,),
+            activeIcon:SvgPicture.asset(AppImages.profile,color: AppColors.black,),
           )
         ],
       ),

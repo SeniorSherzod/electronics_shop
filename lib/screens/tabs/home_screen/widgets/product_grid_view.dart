@@ -5,8 +5,8 @@ import 'package:provider/provider.dart';
 import '../../../../models/product_model.dart';
 import '../../../../view_models/product_view_model.dart';
 
-class ProductStremBuilder extends StatelessWidget {
-  const ProductStremBuilder({super.key});
+class ProductStreamBuilder extends StatelessWidget {
+  const ProductStreamBuilder({super.key});
 
   @override
   Widget build(BuildContext context) {

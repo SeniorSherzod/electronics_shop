@@ -71,17 +71,17 @@ class CategoryStreamBuilder extends StatelessWidget {
                                 imageUrl: category.imageUrl,
                                 categoryName:category.categoryName,
                                 docId: category.docId));
-                            // context
-                            //     .read<CategoriesViewModel>()
-                            //     .updateCategory(
-                            //   CategoryModel(
-                            //     imageUrl:
-                            //     "https://dnr.wisconsin.gov/sites/default/files/feature-images/ECycle_Promotion_Manufacturers.jpg",
-                            //     categoryName: "Electronics",
-                            //     docId: category.docId,
-                            //   ),
-                            //   context,
-                            // );
+                            context
+                                .read<CategoriesViewModel>()
+                                .updateCategory(
+                              CategoryModel(
+                                imageUrl:
+                                "https://dnr.wisconsin.gov/sites/default/files/feature-images/ECycle_Promotion_Manufacturers.jpg",
+                                categoryName: "Electronics",
+                                docId: category.docId, storagePath: '',
+                              ),
+                              context,
+                            );
                           },
                           icon: const Icon(Icons.edit),
                         ),

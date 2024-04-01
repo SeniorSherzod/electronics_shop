@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../view_models/maps_view_model.dart';
+import '../../../../view_models/map_view_model.dart';
 
 class MapTypeItem extends StatelessWidget {
   const MapTypeItem({super.key});
@@ -36,7 +36,7 @@ class MapTypeItem extends StatelessWidget {
                     child: const Text("Normal"),
                     onTap: () {
                       context
-                          .read<MapsViewModel>()
+                          .read<MapViewModel>()
                           .changeMapType(MapType.normal);
                     },
                   ),
@@ -44,7 +44,7 @@ class MapTypeItem extends StatelessWidget {
                     child: const Text("Hybrid"),
                     onTap: () {
                       context
-                          .read<MapsViewModel>()
+                          .read<MapViewModel>()
                           .changeMapType(MapType.hybrid);
                     },
                   ),
@@ -52,7 +52,7 @@ class MapTypeItem extends StatelessWidget {
                     child: const Text("Satellite"),
                     onTap: () {
                       context
-                          .read<MapsViewModel>()
+                          .read<MapViewModel>()
                           .changeMapType(MapType.satellite);
                     },
                   ),

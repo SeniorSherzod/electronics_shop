@@ -33,9 +33,10 @@ class _BottomSheetButtonState extends State<BottomSheetButton> {
         onPressed: () {
           showModalBottomSheet<void>(
             context: context,
+            isScrollControlled: true,
             builder: (BuildContext context) {
               return Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding:  EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: Column(
                   children: [
                     Text('Select a location'),

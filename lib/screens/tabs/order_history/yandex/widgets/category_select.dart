@@ -1,19 +1,16 @@
-import 'package:electronics_shop/models/places/place_category.dart';
-import 'package:electronics_shop/models/places/place_model.dart';
+import 'package:electronics_shop/utils/colors/colors.dart';
 import 'package:electronics_shop/utils/extensions/extensions.dart';
 import 'package:electronics_shop/view_models/map_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../../../models/places/place_category.dart';
+import '../../../../../models/places/place_model.dart';
+import '../../../../../utils/images/images.dart';
 
-import '../../../../utils/images/images.dart';
 
-class CategorySelect extends StatefulWidget {
-   CategorySelect({super.key});
-  @override
-  State<CategorySelect> createState() => _CategorySelectState();
-}
-
-class _CategorySelectState extends State<CategorySelect> {
+categoryButtons(
+{required ValueChanged<String> image}
+    ){
   PlaceModel placeModel=PlaceModel.initialvalue();
   int _activeIndex = 0;
   final List<String> _icons = [
@@ -27,9 +24,7 @@ class _CategorySelectState extends State<CategorySelect> {
     "Work",
     "Other",
   ];
-
-  @override
-  Widget build(BuildContext context) {
+  return StatefulBuilder(builder: (BuildContext context, void Function(void Function()) setState) {
     return Container(
       width: MediaQuery.of(context).size.width,
       color: Colors.transparent,
@@ -38,7 +33,7 @@ class _CategorySelectState extends State<CategorySelect> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: List.generate(
           _icons.length,
-          (index) => Material(
+              (index) => Material(
             color: Colors.transparent,
             child: Container(
               decoration: BoxDecoration(
@@ -56,7 +51,7 @@ class _CategorySelectState extends State<CategorySelect> {
                 },
                 child: Padding(
                   padding:
-                      EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
+                  EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
                   child: Row(
                     children: [
                       Image.asset(
@@ -84,5 +79,8 @@ class _CategorySelectState extends State<CategorySelect> {
         ),
       ),
     );
-  }
+  },
+
+  );
 }
+

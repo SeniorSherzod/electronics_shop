@@ -1,10 +1,12 @@
 import 'package:electronics_shop/screens/routes.dart';
 import 'package:electronics_shop/services/local_notification%20services.dart';
 import 'package:electronics_shop/utils/colors/colors.dart';
+import 'package:electronics_shop/view_models/adress_view_model.dart';
 import 'package:electronics_shop/view_models/categoriy_view_model.dart';
 import 'package:electronics_shop/view_models/image_view_models.dart';
 import 'package:electronics_shop/view_models/location_view_model.dart';
-import 'package:electronics_shop/view_models/maps_view_model.dart';
+import 'package:electronics_shop/view_models/map_view_model.dart';
+import 'package:electronics_shop/view_models/maps_viev_model.dart';
 import 'package:electronics_shop/view_models/news_view_model.dart';
 import 'package:electronics_shop/view_models/product_view_model.dart';
 import 'package:electronics_shop/view_models/sign_up_view.dart';
@@ -29,6 +31,7 @@ options: DefaultFirebaseOptions.currentPlatform);
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   runApp(MultiProvider(
     providers: [
+      ChangeNotifierProvider(create: (_) => AddressesViewModel()..loadAddresses()),
       ChangeNotifierProvider(create: (_) => LoginViewModel()),
       ChangeNotifierProvider(create: (_) => TabViewModel()),
       ChangeNotifierProvider(create: (_) => CategoriesViewModel()),
@@ -36,6 +39,7 @@ options: DefaultFirebaseOptions.currentPlatform);
       ChangeNotifierProvider(create: (_) => NewsViewModel()),
       ChangeNotifierProvider(create: (_) => ImageViewModel()),
       ChangeNotifierProvider(create: (_) => LocationViewModel()),
+      ChangeNotifierProvider(create: (_) => MapViewModel()),
       ChangeNotifierProvider(create: (_) => MapsViewModel()),
     ],
     child: const MyApp(),
@@ -53,7 +57,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        toggleableActiveColor: AppColors.main,
+        // toggleableActiveColor: AppColors.main,
         useMaterial3: false,
         scaffoldBackgroundColor: AppColors.white
       ),

@@ -181,7 +181,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
           ),
         ),
       ),
-        body: const SingleChildScrollView(child: ProductStremBuilder())
+        body: const SingleChildScrollView(child: ProductStreamBuilder())
     );
   }
 }

@@ -6,7 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../utils/images/images.dart';
 
-class MapsViewModel extends ChangeNotifier {
+class MapViewModel extends ChangeNotifier {
   final   Completer<GoogleMapController> controller =
   Completer<GoogleMapController>();
 
