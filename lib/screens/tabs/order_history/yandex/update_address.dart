@@ -17,10 +17,11 @@ import 'google_maps.dart';
 class UpdateAddressScreen extends StatefulWidget {
   const UpdateAddressScreen({
     super.key, // Added missing Key parameter
-    required this.placeModel,
+    required this.placeModel, required this.onTap,
   }); // Added missing super call
 
   final PlaceModel placeModel;
+  final VoidCallback onTap;
 
   @override
   State<UpdateAddressScreen> createState() => _UpdateAddressScreenState();
@@ -128,10 +129,11 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
                   PlaceModel place = newAddressDetails;
                   place.latLng = cameraPosition!.target;
                   place.placeCategory = PlaceCategory.work;
-                  context.read<AddressesViewModel>().addNewAddress(place,context);
+                  context.read<AddressesViewModel>().updatePlace(place,context);
                   Navigator.pop(context);
                 }, viewModel: addressesViewModel, imagePath: "",
               );
+              widget.onTap.call();
             },
 
             child: const Icon(Icons.place),

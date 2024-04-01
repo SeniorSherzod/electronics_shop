@@ -49,22 +49,25 @@ class AddressesViewModel extends ChangeNotifier {
   //
   //   }
   // }
-  // updatePlace(PlaceModel productModel, BuildContext context) async {
-  //   try {
-  //     _notify(true);
-  //     await FirebaseFirestore.instance
-  //         .collection(AppConstants.addresses)
-  //         .doc(cf.id)
-  //         .update(productModel.toUpdateJson());
-  //     if (!context.mounted) return;
-  //     Navigator.pop(context);
-  //
-  //     _notify(false);
-  //   } on FirebaseException catch (error) {
-  //     if (!context.mounted) return;
-  //     debugPrint(error.message);
-  //   }
-  // }
+  updatePlace(PlaceModel productModel, BuildContext context) async {
+    try {
+      _notify(true);
+      var cf = await FirebaseFirestore.instance
+          .collection(AppConstants.addresses)
+          .add(productModel.toJson());
+      await FirebaseFirestore.instance
+          .collection(AppConstants.addresses)
+          .doc(cf.id)
+          .update(productModel.toUpdateJson());
+      if (!context.mounted) return;
+      Navigator.pop(context);
+
+      _notify(false);
+    } on FirebaseException catch (error) {
+      if (!context.mounted) return;
+      debugPrint(error.message);
+    }
+  }
   addNewAddress(
      PlaceModel placeModel,
       BuildContext context,

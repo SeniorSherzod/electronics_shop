@@ -46,7 +46,7 @@ class _OrderScreenState extends State<OrderScreen> {
                           MaterialPageRoute(
                             builder: (context) {
                               return UpdateAddressScreen(
-                                placeModel: myAddress,
+                                placeModel: myAddress, onTap: () { context.read<AddressesViewModel>().loadAddresses(); },
                               );
                             },
                           ),
