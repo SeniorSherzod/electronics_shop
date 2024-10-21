@@ -30,7 +30,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController passwordController = TextEditingController();
 
   bool passwordVisibility = false;
-
+  bool nameVisibility = false;
+  bool emailVisibility = false;
   @override
   void dispose() {
     usernameController.dispose();
@@ -115,26 +116,45 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   controller: usernameController,
                   errorText: 'Ismda xatolik bor',
                   type: TextInputType.text,
-                  regExp: AppConstants.textRegExp, isVisible: true,),
+                  regExp: AppConstants.textRegExp, isVisible: nameVisibility, onSuffixTap: () {
+                  setState(() {
+                    nameVisibility = !nameVisibility; // Toggle visibility
+                  });
+                },),
                 SizedBox(height: 10),
                 UniversalTextFormField(
-                  hintText: "E-mail",
-                  onChanged:(value){},
-                  onSubmit: (v){},
+                  prefix: SvgPicture.asset(AppImages.emails),
+                  hintText: "Email",
+                  onChanged: (value) {},
+                  onSubmit: (v) {},
                   controller: emailController,
-                  errorText: 'emailda xatolik bor',
-                  type: TextInputType.emailAddress,
-                  regExp: AppConstants.emailRegExp, isVisible: true,),
+                  errorText: 'Email is invalid',
+                  type: TextInputType.text,
+                  regExp: AppConstants.emailRegExp,
+                  isVisible: emailVisibility, // Bind visibility state
+                  onSuffixTap: () {
+                    setState(() {
+                      emailVisibility = !emailVisibility; // Toggle visibility
+                    });
+                  },
+                ),
                 SizedBox(height: 10),
                 UniversalTextFormField(
-                  prefix:SvgPicture.asset(AppImages.eye),
+                  prefix: SvgPicture.asset(AppImages.password),
                   hintText: "Password",
-                  onChanged:(value){},
-                  onSubmit: (v){},
+                  onChanged: (value) {},
+                  onSubmit: (v) {},
                   controller: passwordController,
-                  errorText: 'passworda xatolik bor',
+                  errorText: 'Password is invalid',
                   type: TextInputType.text,
-                  regExp: AppConstants.passwordRegExp, isVisible: false,),
+                  regExp: AppConstants.passwordRegExp,
+                  isVisible: passwordVisibility, // Bind visibility state
+                  onSuffixTap: () {
+                    setState(() {
+                      passwordVisibility = !passwordVisibility; // Toggle visibility
+                    });
+                  },
+                ),
                 SizedBox(height: 10),
                 GlobalButton(onTap: (){
                   Navigator.pushReplacement(

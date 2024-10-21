@@ -33,7 +33,7 @@ class AppImages {
 
 
 //.jpg
-  static const String home = "assets/images/home.png";
+  static const String home = "assets/icons/home.svg";
   static const String work = "assets/images/work.png";
   static const String current = "assets/images/current.png";
 

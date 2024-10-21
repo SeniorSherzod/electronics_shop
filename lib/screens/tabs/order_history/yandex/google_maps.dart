@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-import '../../../../models/places/place_category.dart';
 import '../../../../models/places/place_model.dart';
 import '../../../../utils/colors/colors.dart';
 import '../../../../utils/images/images.dart';
@@ -59,7 +58,7 @@ class _GoogleScreenState extends State<GoogleScreen> {
                       "CURRENT POSITION:${currentCameraPosition.target.longitude}");
                 },
                 mapType: viewModel.mapType,
-                initialCameraPosition: viewModel.initialCameraPosition,
+                initialCameraPosition: context.watch<MapsViewModel>().initialCameraPosition,
                 onMapCreated: (GoogleMapController createdController) {
                   viewModel.controller.complete(createdController);
                 },

@@ -49,16 +49,13 @@ class AddressesViewModel extends ChangeNotifier {
   //
   //   }
   // }
-  updatePlace(PlaceModel productModel, BuildContext context) async {
+  updatePlace(PlaceModel placeModel, BuildContext context) async {
     try {
       _notify(true);
-      var cf = await FirebaseFirestore.instance
-          .collection(AppConstants.addresses)
-          .add(productModel.toJson());
       await FirebaseFirestore.instance
           .collection(AppConstants.addresses)
-          .doc(cf.id)
-          .update(productModel.toUpdateJson());
+          .doc(placeModel.docId)
+          .update(placeModel.toUpdateJson());
       if (!context.mounted) return;
       Navigator.pop(context);
 

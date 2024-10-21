@@ -38,9 +38,10 @@ options: DefaultFirebaseOptions.currentPlatform);
       ChangeNotifierProvider(create: (_) => ProductsViewModel()),
       ChangeNotifierProvider(create: (_) => NewsViewModel()),
       ChangeNotifierProvider(create: (_) => ImageViewModel()),
-      ChangeNotifierProvider(create: (_) => LocationViewModel()),
-      ChangeNotifierProvider(create: (_) => MapViewModel()),
+      ChangeNotifierProvider(create: (_) => LocationViewModel()..getUserLocation()..location),
+      ChangeNotifierProvider(create: (_) => MapViewModel()..initialCameraPosition),
       ChangeNotifierProvider(create: (_) => MapsViewModel()),
+
     ],
     child: const MyApp(),
   ));

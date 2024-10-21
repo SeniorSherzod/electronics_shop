@@ -22,6 +22,7 @@ class UniversalTextFormField extends StatelessWidget {
     this.labelText,
     required this.isVisible,
     this.suffix,
+    this.onSuffixTap, // New
   }) : super(key: key);
 
   final String hintText;
@@ -35,7 +36,8 @@ class UniversalTextFormField extends StatelessWidget {
   final TextInputType type;
   final RegExp regExp;
   final String? labelText;
-  final  bool? isVisible;
+  final bool isVisible; // Now required and non-nullable
+  final VoidCallback? onSuffixTap; // New callback for toggling visibility
 
   @override
   Widget build(BuildContext context) {
@@ -45,13 +47,18 @@ class UniversalTextFormField extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 20, right: 20),
           child: Container(
-           height: 60,
+            height: 60,
             padding: EdgeInsets.zero,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
-              boxShadow:[
-                BoxShadow(color: Colors.grey, blurRadius: 3.0, spreadRadius: 0.4,offset: Offset(0, 3), )
-              ]
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey,
+                  blurRadius: 3.0,
+                  spreadRadius: 0.4,
+                  offset: Offset(0, 3),
+                )
+              ],
             ),
             child: TextFormField(
               controller: controller,
@@ -67,7 +74,7 @@ class UniversalTextFormField extends StatelessWidget {
                   return null;
                 }
               },
-              obscureText: isVisible!,
+              obscureText: isVisible, // Bind isVisible to obscureText
               autovalidateMode: AutovalidateMode.onUserInteraction,
               decoration: InputDecoration(
                 fillColor: AppColors.white,
@@ -101,21 +108,23 @@ class UniversalTextFormField extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16),
                 ),
                 errorStyle: TextStyle(color: Colors.red),
-                contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-                // Adding shadow to the bottom
-                suffixIcon: Visibility(
-                  visible: isVisible!,
-                  child:IconButton(
-                    onPressed: (){
-
-                    },icon: SvgPicture.asset(AppImages.eye),
-                  )
+                contentPadding:
+                EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+                suffixIcon: GestureDetector(
+                  onTap: onSuffixTap, // Handle tap for eye icon
+                  child: Icon(
+                    isVisible
+                        ? Icons.visibility_off // Show 'closed eye' if visible
+                        : Icons.visibility, // Show 'eye' if not visible
+                    color: Colors.grey,
+                  ),
                 ),
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }
 }
+

@@ -56,7 +56,7 @@ class MapsViewModel extends ChangeNotifier {
   changeCurrentLocation(CameraPosition cameraPosition) async {
     currentCameraPosition = cameraPosition;
     currentPlaceName =
-    await ApiProvider.getPlaceNameByLocation(cameraPosition.target);
+    await ApiProvider.getPlaceNameByLocation(const LatLng(41.2995, 69.2401));
     notifyListeners();
   }
 

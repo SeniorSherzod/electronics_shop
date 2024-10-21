@@ -59,11 +59,11 @@ class _CategorySelectState extends State<CategorySelect> {
                       EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
                   child: Row(
                     children: [
-                      Image.asset(
-                        _icons[index],
-                        height: 40.h,
-                        width: 40.w,
-                      ),
+                      // Image.asset(
+                      //   _icons[index],
+                      //   height: 40.h,
+                      //   width: 40.w,
+                      // ),
                       10.getW(),
                       Text(
                         titles[index],

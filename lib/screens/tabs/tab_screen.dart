@@ -33,6 +33,8 @@ class _TabScreenState extends State<TabScreen> {
       body: screens[context.watch<TabViewModel>().getIndex],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: AppColors.black,
+        selectedItemColor: AppColors.black,
+        unselectedItemColor: AppColors.white,
         selectedLabelStyle: AppTextStyle.rubikMedium,
         currentIndex: context.watch<TabViewModel>().getIndex,
         onTap: (newIndex) {
@@ -43,27 +45,27 @@ class _TabScreenState extends State<TabScreen> {
             backgroundColor: AppColors.main,
             icon: SvgPicture.asset(AppImages.home),
             label: "Home",
-            activeIcon: SvgPicture.asset(AppImages.home,color: AppColors.black,),
+            activeIcon: SvgPicture.asset(AppImages.home,),
           ),
           BottomNavigationBarItem(
-            backgroundColor: AppColors.main,
+            // backgroundColor: AppColors.main,
             icon: SvgPicture.asset(AppImages.search),
             label: "Browse",
             activeIcon: SvgPicture.asset(AppImages.search,color: AppColors.black,),
           ), BottomNavigationBarItem(
-            backgroundColor: AppColors.main,
+            // backgroundColor: AppColors.main,
             icon: SvgPicture.asset(AppImages.store),
             label: "Store",
             activeIcon: SvgPicture.asset(AppImages.store,color: AppColors.black,),
           ),
           BottomNavigationBarItem(
-            backgroundColor: AppColors.main,
+            // backgroundColor: AppColors.main,
             icon:SvgPicture.asset(AppImages.order),
             label: "Order history",
             activeIcon: SvgPicture.asset(AppImages.order,color: AppColors.black,),
           ),
           BottomNavigationBarItem(
-            backgroundColor: AppColors.main,
+            // backgroundColor: AppColors.main,
             icon: SvgPicture.asset(AppImages.profile),
             label: "Profile",
             activeIcon:SvgPicture.asset(AppImages.profile,color: AppColors.black,),

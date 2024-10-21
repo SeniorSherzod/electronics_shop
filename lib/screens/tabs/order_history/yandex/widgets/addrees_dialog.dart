@@ -11,18 +11,24 @@ void addressDetailDialog({
   required BuildContext context,
   required AddressesViewModel viewModel,
   required Function(PlaceModel newAddressDetails) placeModel,
+  String? enterPlace,
+  String? entrance,
+  String? stage,
+  String? floor,
+  String? description,
 }) {
-  final TextEditingController placeController = TextEditingController();
-  final TextEditingController entranceController = TextEditingController();
-  final TextEditingController stageController = TextEditingController();
-  final TextEditingController floorController = TextEditingController();
-  final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController placeController = TextEditingController(text: enterPlace);
+  final TextEditingController entranceController = TextEditingController(text: entrance);
+  final TextEditingController stageController = TextEditingController(text: stage);
+  final TextEditingController floorController = TextEditingController(text: floor);
+  final TextEditingController descriptionController = TextEditingController(text: description);
 
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
     builder: (context) {
-      debugPrint("-------------------------------------------------------$imagePath");
+      debugPrint(
+          "-------------------------------------------------------$imagePath");
       return Padding(
         padding: EdgeInsets.only(
           bottom: MediaQuery.of(context).viewInsets.bottom,
@@ -30,7 +36,7 @@ void addressDetailDialog({
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               UpdateTextfield(
                 hintText: "Enter place",
                 controller: placeController,
@@ -38,7 +44,7 @@ void addressDetailDialog({
                 onChanged: (String value) {},
                 onSubmit: (String value) {},
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -77,7 +83,7 @@ void addressDetailDialog({
                   ),
                 ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               UpdateTextfield(
                 hintText: "Description",
                 controller: descriptionController,
@@ -85,28 +91,30 @@ void addressDetailDialog({
                 onChanged: (String value) {},
                 onSubmit: (String value) {},
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () async {
-                 placeModel.call(PlaceModel(
-                    image: imagePath,
-                    entrance: entranceController.text,
-                    flatNumber: floorController.text,
-                    orientAddress: descriptionController.text,
-                    placeCategory: PlaceCategory.home,
-                    latLng: const LatLng(41, 69),
-                    placeName: placeController.text,
-                    stage: stageController.text, docId: '',
-                  ),);
-                  // await viewModel.addNewAddress(placeModel);
-                  // placeModel(newAddress);
+                  placeModel.call(
+                    PlaceModel(
+                      image: imagePath,
+                      entrance: entranceController.text,
+                      flatNumber: floorController.text,
+                      orientAddress: descriptionController.text,
+                      placeCategory: PlaceCategory.home,
+                      latLng: const LatLng(41, 69),
+                      placeName: placeController.text,
+                      stage: stageController.text,
+                      docId: '',
+                    ),
+                  );
+                  // await viewModel.updatePlace(placeModel as PlaceModel, context);
+                  // placeModel(placeModel);
                   Navigator.pop(context);
                 },
-
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.main,
                 ),
-                child: Text("Save place"),
+                child: const Text("Save place"),
               )
             ],
           ),

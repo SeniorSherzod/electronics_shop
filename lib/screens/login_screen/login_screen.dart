@@ -30,6 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController passwordController = TextEditingController();
 
   bool passwordVisibility = false;
+  bool emailVisibility = false;
   bool _switchValue=false;
   bool isLoading=false;
   @override
@@ -85,25 +86,38 @@ class _LoginScreenState extends State<LoginScreen> {
 
               SizedBox(height: 20),
               UniversalTextFormField(
-                prefix:SvgPicture.asset(AppImages.emails),
+                prefix: SvgPicture.asset(AppImages.emails),
                 hintText: "Email",
-                onChanged:(value){},
-                onSubmit: (v){},
-                controller:emailController ,
-                errorText: 'Emailda xato bor',
-                type: TextInputType.emailAddress,
+                onChanged: (value) {},
+                onSubmit: (v) {},
+                controller: emailController,
+                errorText: 'Email is invalid',
+                type: TextInputType.text,
                 regExp: AppConstants.emailRegExp,
-                isVisible: false,),
+                isVisible: emailVisibility, // Bind visibility state
+                onSuffixTap: () {
+                  setState(() {
+                    emailVisibility = !emailVisibility; // Toggle visibility
+                  });
+                },
+              ),
               SizedBox(height: 15),
               UniversalTextFormField(
-                prefix:SvgPicture.asset(AppImages.password),
+                prefix: SvgPicture.asset(AppImages.password),
                 hintText: "Password",
-                onChanged:(value){},
-                onSubmit: (v){},
+                onChanged: (value) {},
+                onSubmit: (v) {},
                 controller: passwordController,
-                errorText: 'passworda xatolik bor',
+                errorText: 'Password is invalid',
                 type: TextInputType.text,
-                regExp: AppConstants.passwordRegExp, isVisible: true,),
+                regExp: AppConstants.passwordRegExp,
+                isVisible: passwordVisibility, // Bind visibility state
+                onSuffixTap: () {
+                  setState(() {
+                    passwordVisibility = !passwordVisibility; // Toggle visibility
+                  });
+                },
+              ),
               SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -124,8 +124,14 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
           FloatingActionButton(
             onPressed: () {
               addressDetailDialog(
+                enterPlace: widget.placeModel.placeName,
+                entrance: widget.placeModel.entrance,
+                stage: widget.placeModel.stage,
+                floor: widget.placeModel.flatNumber,
+                description: widget.placeModel.orientAddress,
                 context: context,
                 placeModel: (newAddressDetails) {
+
                   PlaceModel place = newAddressDetails;
                   place.latLng = cameraPosition!.target;
                   place.placeCategory = PlaceCategory.work;
